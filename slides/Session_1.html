@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 1 - Introduction to R & Data Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/theme/black.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github-dark.min.css">
+    <style>
+        .reveal section img { max-width: 100%; height: auto; }
+        pre code { font-size: 0.9em; display: block; white-space: pre-wrap; }
+        .title { font-size: 1.3em; font-weight: bold; text-align: center; margin-bottom: 1em; }
+        table { width: 80%; border-collapse: collapse; text-align: center; font-size: 0.6em; margin: auto; border-spacing: 0; border: none; }
+        th { padding: 8px; text-align: left; border: none; }
+        td { padding: 8px; text-align: left; border: none; }
+        tr:nth-child(even) { background-color: #333; }
+        tr:nth-child(odd) { background-color: #222; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="text" style="font-size: 0.8em; text-align: center; margin-bottom: 0.5em;">Session 1</div>
+                <div class="title">Introduction to R & Data Visualization</div>
+            </section>
+            
+            <section>
+                <div class="title">Session Contents</div>
+                <ul>
+                    <li>Install <a href="https://cran.r-project.org/" target="_blank"><strong>R</strong></a> and <a href="https://posit.co/downloads/" target="_blank"><strong>RStudio</strong></a></li>
+                    <li>RStudio interface overview</li>
+                    <li>Basic operations in R</li>
+                    <li>Data visualization with <strong>ggplot2</strong></li>
+                </ul>
+            </section>
+            
+            <section>
+    <div class="title">10 Basic R Functions</div>
+    <pre><code class="r">
+# 1. summary(): Summary statistics
+summary(mtcars)
+
+# 2. head(): First rows of a dataset
+head(mtcars)
+
+# 3. tail(): Last rows of a dataset
+tail(mtcars)
+
+# 4. mean(): Compute the mean
+mean(mtcars$mpg)
+
+# 5. median(): Compute the median
+median(mtcars$mpg)
+
+# 6. sd(): Standard deviation
+sd(mtcars$mpg)
+
+# 7. table(): Frequency table
+table(mtcars$cyl)
+
+# 8. length(): Count elements
+length(mtcars$mpg)
+
+# 9. str(): Structure of an object
+str(mtcars)
+
+# 10. class(): Data type of an object
+class(mtcars)
+    </code></pre>
+</section>
+
+<section>
+    <div class="title">`filter()`: Select rows based on conditions</div>
+    <pre><code class="r">
+# Select cars with 6 cylinders
+library(dplyr)
+mtcars %>% filter(cyl == 6)
+    </code></pre>
+    <p style="text-align: center; font-size: 0.8em;">✅ Returns only rows where `cyl` is 6.</p>
+</section>
+
+<section>
+    <div class="title">`select()`: Choose specific columns</div>
+    <pre><code class="r">
+# Select only mpg, cyl, and hp columns
+library(dplyr)
+mtcars %>% select(mpg, cyl, hp)
+    </code></pre>
+    <p style="text-align: center; font-size: 0.8em;">✅ Returns a table with only the selected columns.</p>
+</section>
+
+<section>
+    <div class="title">`mutate()`: Create or modify columns</div>
+    <pre><code class="r">
+# Add a new column: horsepower per cylinder
+library(dplyr)
+mtcars %>% mutate(hp_per_cyl = hp / cyl)
+    </code></pre>
+    <p style="text-align: center; font-size: 0.8em;">✅ Adds a new column `hp_per_cyl` with computed values.</p>
+</section>
+
+
+<section>
+    <div class="title">`group_by()` + `summarise()`: Aggregate data</div>
+    <pre><code class="r">
+# Calculate mean mpg per cylinder group
+library(dplyr)
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(mean_mpg = mean(mpg))
+    </code></pre>
+    <p style="text-align: center; font-size: 0.8em;">✅ Returns a summary table with the mean `mpg` for each `cyl` group.</p>
+</section>
+
+<section>
+    <div class="title">Basic Plots in Base R</div>
+    <pre><code class="r">
+# 1. Scatter plot (plot)
+plot(x, y, main="Title", xlab="X Label", ylab="Y Label")
+
+# 2. Boxplot (boxplot)
+boxplot(y ~ x, data=df, main="Title", xlab="X Label", ylab="Y Label")
+
+# 3. Histogram (hist)
+hist(x, main="Title", xlab="X Label", breaks=10, col="lightblue")
+
+# 4. Barplot (barplot)
+barplot(table(x), main="Title", xlab="X Label", ylab="Count")
+
+# 5. Pie chart (pie)
+pie(table(x), main="Title")
+    </code></pre>
+</section>
+
+
+
+            <section>
+                <div class="title">What is ggplot2?</div>
+                <ul>
+                    <li>Part of the <strong>tidyverse</strong></li>
+                    <li>Based on <strong>Grammar of Graphics</strong></li>
+                </ul>
+            </section>
+            
+            <section>
+                <div class="title">What is the Grammar of Graphics?</div>
+                <p style="text-align: center; font-size: 1em;">Proposed by Leland Wilkinson, the Grammar of Graphics is a system for describing and constructing statistical graphics. It provides a structured approach to visualizing data by defining components like data, scales, geoms, and aesthetics.</p>
+                <p style="text-align: center; font-size: 0.9em;"><a href="https://link.springer.com/book/10.1007/0-387-28695-0" target="_blank">Read more about the book here</a></p>
+            </section>
+            
+            <section>
+                <div class="title">The seven grammatical elements</div>
+                <table>
+                    <tr>
+                        <th>Element</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr><td>Data</td><td>The data-set being plotted.</td></tr>
+                    <tr><td>Aesthetics</td><td>The scales onto which we <em>map</em> our data.</td></tr>
+                    <tr><td>Geometries</td><td>The visual elements used for our data.</td></tr>
+                    <tr><td>Themes</td><td>All non-data ink.</td></tr>
+                    <tr><td>Statistics</td><td>Representations of our data to aid understanding.</td></tr>
+                    <tr><td>Coordinates</td><td>The space on which the data will be plotted.</td></tr>
+                    <tr><td>Facets</td><td>Plotting small multiples.</td></tr>
+                </table>
+            </section>
+
+<section>
+    <div class="title">Basic Structure of `ggplot2`</div>
+    <p style="text-align: center; font-size: 1em;">
+        `ggplot2` follows a layered approach to building plots.
+    </p>
+    <pre><code class="r">
+# Basic structure of a ggplot:
+library(ggplot2)
+
+ggplot(data = mtcars, aes(x = wt, y = mpg)) +
+  geom_point()
+    </code></pre>
+    <p style="text-align: center; font-size: 0.9em;">
+        ✅ This code creates a scatter plot of `wt` vs `mpg` from `mtcars`.
+    </p>
+</section>
+
+
+            <section>
+                <div class="title">Additional Resources</div>
+                <ul>
+                    <li><a href="https://r-charts.com/es/" target="_blank">R-Charts: Collection of R Graphs</a></li>
+                    <li><a href="https://r-graph-gallery.com/" target="_blank">R Graph Gallery: Examples and Tutorials</a></li>
+                    <li><a href="https://www.data-to-viz.com/#venn" target="_blank">Data to Viz: Graph Selection Guide</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script>
+        Reveal.initialize();
+        hljs.highlightAll();
+    </script>
+</body>
+</html>
+

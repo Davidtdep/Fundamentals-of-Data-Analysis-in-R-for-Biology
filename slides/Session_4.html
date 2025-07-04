@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 4 - ROC Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/theme/black.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github-dark.min.css">
+    <style>
+        .reveal section img { max-width: 100%; height: auto; }
+        pre code { font-size: 0.9em; display: block; white-space: pre-wrap; }
+        .title { font-size: 1.3em; font-weight: bold; text-align: center; margin-bottom: 1em; }
+        .small-title { font-size: 1em; font-weight: bold; text-align: left; margin-bottom: 0.5em; }
+        table { width: 90%; border-collapse: collapse; text-align: center; font-size: 0.5em; margin: auto; border-spacing: 0; }
+        th, td { padding: 4px 15px; text-align: left; height: 1.2em; } /* Aumenté el padding en todas las celdas */
+        th:nth-child(2), td:nth-child(2) { width: 13%; } /* Ajuste del ancho de la columna "p-value" */
+        tr:nth-child(even) { background-color: #333; }
+        tr:nth-child(odd) { background-color: #222; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="text" style="font-size: 0.8em; text-align: center; margin-bottom: 0.5em;">Session 4</div>
+                <div class="title">ROC (Receiver Operating Characteristic) Analysis</div>
+            </section>
+            
+            <section>
+                <div class="title">Session Contents</div>
+                <ul>
+                    <li>ROC curve</li>
+                </ul>
+            </section>
+
+            <section>
+                <img src="/Fundamentals_of_R_for_Data_Analysis/slides/figures/ROChigh.svg" alt="Positive Correlation" style="width: 80%; height: auto; display: block; margin: auto;">
+            </section>
+            
+            <section>
+                <img src="/Fundamentals_of_R_for_Data_Analysis/slides/figures/ROClow.svg" alt="Negative Correlation" style="width: 80%; height: auto; display: block; margin: auto;">
+            </section>
+            
+            <section>
+                <div class="title" style="font-size: 1em;">Performing and Plotting ROC Analysis in R</div>
+                
+                <p style="font-size: 0.5em;">
+                    To create a ROC curve, you need a **numeric predictor** and a **binary outcome**. The ROC curve evaluates how well the predictor discriminates between categories.
+                </p>
+            
+                <pre><code class="language-r"># Load necessary library
+library(pROC)   
+
+# Convert categorical variable to binary (1 = "Yes", 0 = "No")
+data$Outcome_binary <- ifelse(data$Outcome == "Yes", 1, 0)
+
+# Compute ROC curve
+roc_model <- roc(data$Outcome_binary, data$Score)
+
+# Plot ROC curve
+plot(roc_model, col = "blue", main = "ROC Curve")
+abline(a = 0, b = 1, lty = 2, col = "gray")  # Random classifier line
+auc(roc_model)  # Calculate AUC</code></pre>
+            </section>
+
+            <section>
+                <div class="title" style="font-size: 1em;">Key Statistics of the ROC Curve</div>
+                
+                <p style="font-size: 0.5em;">
+                    The ROC curve evaluates a model’s classification performance by plotting sensitivity vs. 1-specificity.
+                </p>
+            
+                <ul style="font-size: 0.5em;">
+                    <li><b>True Positive Rate (TPR) / Sensitivity:</b> Proportion of actual positives correctly identified.</li>
+                    <li><b>False Positive Rate (FPR):</b> Proportion of actual negatives incorrectly classified as positive.</li>
+                    <li><b>Area Under the Curve (AUC):</b> Measures overall model performance (0.5 = random, 1.0 = perfect).</li>
+                    <li><b>Optimal Threshold:</b> The probability cutoff that maximizes sensitivity and specificity.</li>
+                </ul>
+            </section>
+            
+            
+        </div>
+    </div>
+    <script>
+        Reveal.initialize();
+        hljs.highlightAll();
+    </script>
+</body>
+</html>
