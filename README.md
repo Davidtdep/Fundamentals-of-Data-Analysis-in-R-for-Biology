@@ -1,7 +1,7 @@
 # Fundamentals of Data Analysis in R for Biology
 
 ## 📌 Course Overview
-This repository contains materials for the **Fundamentals of R for Data Analysis** course. This is a **5-week in-person course** designed for university students interested in learning data manipulation, analysis, and visualization using R.
+This repository contains materials for the **Fundamentals of Data Analysis in R for Biology** course. This is a **5-week in-person course** designed for university students interested in learning data manipulation, analysis, and visualization using R.
 
 **📍 Organized by:**
 - Center for Scientific Consulting & Meta-Research in Biomedical Sciences (CECIMIB SAS): Barranquilla, CO
