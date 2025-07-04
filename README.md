@@ -45,10 +45,6 @@ Fundamentals_of_R_for_Data_Analysis/
 │── .gitignore              # Ignore unnecessary files
 │── slides/                 # Course slides (HTML/Markdown)
 │── datasets/               # Example datasets for exercises
-│── scripts/                # R scripts for each session
-│── assignments/            # Homework & projects
-│── resources/              # Additional learning resources
-│── syllabus/               # Syllabus and course plan
 ```
 
 ---
