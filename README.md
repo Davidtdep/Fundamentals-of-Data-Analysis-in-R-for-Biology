@@ -4,10 +4,12 @@
 This repository contains materials for the **Fundamentals of R for Data Analysis** course. This is a **5-week in-person course** designed for university students interested in learning data manipulation, analysis, and visualization using R.
 
 **📍 Organized by:**
-- Grupo Prometeus Biomedicina Aplicada a las Ciencias Clínicas, Universidad de Cartagena.
-- Center for Meta-Research and Scientometrics in Biomedical Sciences, Barranquilla, Colombia.
+- Center for Scientific Consulting & Meta-Research in Biomedical Sciences (CECIMIB SAS): Barranquilla, CO
+- Center for Meta-Research and Scientometrics in Biomedical Sciences (METRIC-BIO): Barranquilla, CO
 
-**🎓 Instructor:** David A. Hernandez-Paez, Medical Student.
+**🎓 Instructors:** 
+- David A. Hernandez-Paez, Medical Student. 
+- Andy A. Acosta-Monterrosa, Biology Student.
 
 ---
 
@@ -30,7 +32,7 @@ Train participants in the use of **R** for data manipulation, analysis, and visu
 | 2️⃣ | Statistical Testing | Hypothesis testing (Mann-Whitney, Wilcoxon, ANOVA, etc.) with visualization | [Session 2](https://davidtdep.github.io/Fundamentals_of_R_for_Data_Analysis/slides/Session_2.html) |
 | 3️⃣ | Correlation & Regression | Correlation analysis, regression modeling, and heatmaps | [Session 3](https://davidtdep.github.io/Fundamentals_of_R_for_Data_Analysis/slides/Session_3.html) |
 | 4️⃣ | ROC Curves & Feedback | ROC analysis, review session, and project briefing | [Session 4](https://davidtdep.github.io/Fundamentals_of_R_for_Data_Analysis/slides/Session_4.html) |
-| 5️⃣ | Final Project | Real dataset analysis, presentation, and peer review | _Coming soon_ |
+| 5️⃣ | Diversity Indices in R | An Introduction to Alpha and Beta Diversity Metrics | [Session 5](https://davidtdep.github.io/Fundamentals_of_R_for_Data_Analysis/slides/Session_5.html) |
 
 ---
 
